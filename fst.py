@@ -1,21 +1,4 @@
 from math import inf
-import tsp
-with open('matrix.txt', 'r') as f: matrix = ([list(map(int, row.split())) for row in f.readlines()])
-n = range(len(matrix))
-for i in n:
-    for j in n:
-        if i == j:
-            matrix[i].insert(j, 0)
-shortestpath = {(i, j): matrix[i][j] for i in n for j in n}
-f = tsp.tsp(n, shortestpath)
-for i in n:
-    f[1][i] += 1
-print(int(f[0]))
-s = ''
-for i in range(0, len(f[1])-1, 2):
-    s += str(f[1][i]) + '->' + str(f[1][i + 1]) + '->'
-s += str(f[1][-1]) + '->' + str(f[1][0])
-print(s)
 with open('matrix.txt', 'r') as f:
     matrix = ([list(map(int, row.split())) for row in f.readlines()])
 n = len(matrix)
